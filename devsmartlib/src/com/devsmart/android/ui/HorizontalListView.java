@@ -17,15 +17,21 @@
 
 package com.devsmart.android.ui;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
 
-import android.content.*;
-import android.database.*;
-import android.graphics.*;
-import android.util.*;
-import android.view.*;
+import android.content.Context;
+import android.database.DataSetObserver;
+import android.graphics.Rect;
+import android.util.AttributeSet;
+import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
-import android.widget.*;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
+import android.widget.Scroller;
 
 public class HorizontalListView extends AdapterView<ListAdapter> {
 
@@ -58,7 +64,10 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
         mNextX = 0;
         mMaxX = Integer.MAX_VALUE;
         mScroller = new Scroller(getContext());
-        mGesture = new GestureDetector(getContext(), mOnGesture);
+        
+        if(!isInEditMode()){
+            mGesture = new GestureDetector(getContext(), mOnGesture);    
+        }        
     }
 
     @Override
