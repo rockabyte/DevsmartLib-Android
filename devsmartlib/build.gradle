@@ -10,7 +10,7 @@ apply plugin: 'android-library'
 
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar', exclude: 'android-support-v4.jar')
-    compile project(':android-support')
+    compile project(':subprojects:android-support')
 }
 
 android {
